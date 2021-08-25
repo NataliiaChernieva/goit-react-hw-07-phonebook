@@ -3,8 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { CustomForm } from './Form.styled';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
-import { useDispatch } from 'react-redux';
-// import { addContact } from '../../redux/actions/items'; //без Toolkit i Slice
+import { useDispatch, useSelector } from 'react-redux';
 import {addContact} from '../../redux/slices/items.js';
 
 export default function Form() {
@@ -12,6 +11,8 @@ export default function Form() {
   const [number, setNumber] = useState('');
 
   const dispatch = useDispatch();
+  const contacts = useSelector(state => state.items.entities);
+  
   
   const handleSetInfo = e => {
     const { name, value } = e.target;
@@ -32,7 +33,11 @@ export default function Form() {
   const handleAddContact = e => {
     e.preventDefault();
     const id = uuidv4();
-    dispatch(addContact({ name, number, id }));
+
+    contacts.find(savedContact => savedContact.name === name)
+      ? alert(`${name} is already in contacts`)
+      : dispatch(addContact({ name, number, id }));
+      
     reset();
   };
 

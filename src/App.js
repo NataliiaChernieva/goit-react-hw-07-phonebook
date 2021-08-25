@@ -11,8 +11,8 @@ import Filter from './components/Filter/Filter.jsx';
 
 
 export default function App() {
-  const contacts = useSelector((state) => state.items);
- 
+  const contacts = useSelector((state) => state.items.entities);
+  console.log(`contacts`, contacts);
    // const formSubmitHandle = ({ name, number }) => {
   //   const contact = { name, number, id: uuidv4() };
   //   contacts.find(savedContact => savedContact.name === name)
@@ -24,8 +24,8 @@ export default function App() {
     <Container>
       <Title>Phonebook</Title>
       <Form/>
-      {contacts.length !== 0 && <SectionTitle>Contacts</SectionTitle>}
-      {contacts.length !== 0 && <Filter/>}
+      {contacts.length > 0 && <SectionTitle>Contacts</SectionTitle>}
+      {contacts.length > 0 && <Filter/>}
       <ContactList/>
     </Container>
   );

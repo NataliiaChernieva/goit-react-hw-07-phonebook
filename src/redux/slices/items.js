@@ -2,10 +2,14 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const itemsSlice=createSlice({
   name: 'items',
-  initialState: JSON.parse(localStorage.getItem('contactList')) ?? [],
+  initialState: {
+    entities: [],
+    isLoading: false,
+    error: null,
+  } ,
   reducers: {
-     addContact:  (state,action)=>[action.payload,...state],
-     deleteContact: (state, action)=> state.filter((contact) => contact.id !== action.payload),
+    addContact: (state, action) => ({ ...state, entities: [action.payload,...state.entities] }),
+    deleteContact: (state, action) => ({ ...state, entities: state.entities.filter((contact) => contact.id !== action.payload), }),
   }
 });
 
