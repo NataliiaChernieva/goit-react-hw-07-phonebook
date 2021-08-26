@@ -26,18 +26,18 @@ const itemsSlice=createSlice({
     [fetchContacts.fulfilled]: (state, action) => {
       return {
         ...state,
-        entities: [action.payload,...state.entities],
+        entities: [...state.entities,...action.payload],
         isLoading: false,
         error: null,
       }
     },
 
     [fetchContacts.pending]: (state) => {
-      return {...state, entities:[] , isLoading: true, error: null,}
+      return {...state, isLoading: true, error: null,}
     },
 
-    [fetchContacts.rejected]: (state, action) => {
-      return {...state, isLoading: false, error: action.payload,}
+    [fetchContacts.rejected]: (state) => {
+      return {...state, isLoading: false, error: "ERROR",}
     },
 
 
