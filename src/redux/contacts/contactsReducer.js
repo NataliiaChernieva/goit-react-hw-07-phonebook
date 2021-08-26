@@ -1,6 +1,6 @@
-import { combineReducers, createReducer } from "@reduxjs/toolkit";
+//import { combineReducers, createReducer } from "@reduxjs/toolkit";//без Slice
 //import * as contactsActions from './contactsActions'; // без AsyncThunk
-import { fetchContacts } from './contactsOperations'; // c AsyncThunk
+//import { fetchContacts } from './contactsOperations'; // c AsyncThunk без Slice
 
 // // без AsyncThunk
 // const entities = createReducer([], {
@@ -18,24 +18,24 @@ import { fetchContacts } from './contactsOperations'; // c AsyncThunk
 //     [contactsActions.fetchContactsRequest]: () => null,
 // });
 
-// c AsyncThunk
-const entities = createReducer([], {
-    [fetchContacts.fulfilled]: (_, action) => action.payload,
-});
+// // c AsyncThunk без Slice
+// const entities = createReducer([], {
+//     [fetchContacts.fulfilled]: (_, action) => action.payload,
+// });
 
-const isLoading = createReducer(false, {
-    [fetchContacts.pending]: () => true,
-    [fetchContacts.fulfilled]: () => false,
-    [fetchContacts.rejected]: () => false,
-});
+// const isLoading = createReducer(false, {
+//     [fetchContacts.pending]: () => true,
+//     [fetchContacts.fulfilled]: () => false,
+//     [fetchContacts.rejected]: () => false,
+// });
 
-const error = createReducer(null, {
-    [fetchContacts.rejected]: (_, action)=>action.payload,
-    [fetchContacts.pending]: () => null,
-})
+// const error = createReducer(null, {
+//     [fetchContacts.rejected]: (_, action)=>action.payload,
+//     [fetchContacts.pending]: () => null,
+// })
 
-export default combineReducers({
-    entities,
-    isLoading,
-    error,
-})
+// export default combineReducers({
+//     entities,
+//     isLoading,
+//     error,
+// });
