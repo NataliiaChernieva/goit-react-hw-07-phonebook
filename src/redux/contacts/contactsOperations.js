@@ -19,10 +19,32 @@ import * as contactsAPI from 'services/contacts-api';
 export const fetchContacts = createAsyncThunk('contacts/fetchContacts',
     async (_, { rejectWithValue }) => {
         try {
-            const contacts = await contactsAPI.fetchContacts();
-            return contacts;   
+            const contactsFromDB = await contactsAPI.fetchContacts();
+            return contactsFromDB;   
         } catch (error) {
             return rejectWithValue(error);
+        }
+    
+});
+
+export const postContact = createAsyncThunk('contacts/postContacts',
+    async (newContact) => {
+        try {
+            const contactsFromDB = await contactsAPI.postContact(newContact);
+            return contactsFromDB;   
+        } catch (error) {
+            return (error);
+        }
+    
+    });
+
+export const deleteContact = createAsyncThunk('contacts/deleteContacts',
+    async (idContact) => {
+        try {
+            const contactsFromDB = await contactsAPI.deleteContact(idContact);
+            return contactsFromDB;   
+        } catch (error) {
+            return (error);//пересмотреть
         }
     
 });
