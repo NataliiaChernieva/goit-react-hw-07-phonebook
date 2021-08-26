@@ -72,7 +72,7 @@ const itemsSlice=createSlice({
   }
 });
 
-export const {addContact, deleteContact} = itemsSlice.actions;
+//export const {addContact, deleteContact} = itemsSlice.actions;
 export default itemsSlice.reducer;
 
 

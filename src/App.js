@@ -8,10 +8,11 @@ import {
 import Form from './components/Form/Form.jsx';
 import ContactList from './components/ContactList/ContactList.jsx';
 import Filter from './components/Filter/Filter.jsx';
+import { getContacts } from 'redux/contacts/contactsSelectors';
 
 
 export default function App() {
-  const contacts = useSelector((state) => state.items.entities);
+  const contacts = useSelector(getContacts);
   console.log(`contacts`, contacts);
    // const formSubmitHandle = ({ name, number }) => {
   //   const contact = { name, number, id: uuidv4() };

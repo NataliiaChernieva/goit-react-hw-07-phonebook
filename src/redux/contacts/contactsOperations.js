@@ -41,8 +41,8 @@ export const postContact = createAsyncThunk('contacts/postContacts',
 export const deleteContact = createAsyncThunk('contacts/deleteContacts',
     async (idContact) => {
         try {
-            const contactsFromDB = await contactsAPI.deleteContact(idContact);
-            return contactsFromDB;   
+            await contactsAPI.deleteContact(idContact);
+            return idContact;   
         } catch (error) {
             return (error);//пересмотреть
         }

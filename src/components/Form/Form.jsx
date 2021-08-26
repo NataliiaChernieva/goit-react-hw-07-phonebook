@@ -4,16 +4,17 @@ import { CustomForm } from './Form.styled';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
 import { useDispatch, useSelector } from 'react-redux';
-import {addContact} from '../../redux/slices/items.js';
+// import {addContact} from '../../redux/slices/items.js';
+import {postContact} from 'redux/contacts/contactsOperations';
+import { getContacts } from 'redux/contacts/contactsSelectors';
 
 export default function Form() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.items.entities);
-  
-  
+  const contacts = useSelector(getContacts);
+    
   const handleSetInfo = e => {
     const { name, value } = e.target;
     switch (name) {
@@ -36,7 +37,8 @@ export default function Form() {
 
     contacts.find(savedContact => savedContact.name === name)
       ? alert(`${name} is already in contacts`)
-      : dispatch(addContact({ name, number, id }));
+      // : dispatch(addContact({ name, number, id }));
+      : dispatch(postContact({ name, number, id }));
       
     reset();
   };
