@@ -14,13 +14,7 @@ import { getContacts } from 'redux/contacts/contactsSelectors';
 export default function App() {
   const contacts = useSelector(getContacts);
   console.log(`contacts`, contacts);
-   // const formSubmitHandle = ({ name, number }) => {
-  //   const contact = { name, number, id: uuidv4() };
-  //   contacts.find(savedContact => savedContact.name === name)
-  //     ? alert(`${name} is already in contacts`)
-  //     : setContacts(prevContacts => [...prevContacts, contact]);
-  // };
-
+  
   return (
     <Container>
       <Title>Phonebook</Title>

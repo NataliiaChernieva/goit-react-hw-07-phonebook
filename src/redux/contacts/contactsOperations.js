@@ -44,7 +44,7 @@ export const deleteContact = createAsyncThunk('contacts/deleteContacts',
             await contactsAPI.deleteContact(idContact);
             return idContact;   
         } catch (error) {
-            return (error);//пересмотреть
+            return (error);
         }
     
 });

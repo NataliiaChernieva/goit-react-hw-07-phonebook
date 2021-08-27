@@ -7,8 +7,8 @@ import ContactListItem from '../ContactListItem/ContactListItem';
 import { contactsOperations, contactsSelectors } from 'redux/contacts';
 
 export default function ContactList() {
-  const contacts = useSelector(contactsSelectors.getContacts);
-  const filterValue = useSelector(contactsSelectors.getFilter);
+  // const contacts = useSelector(contactsSelectors.getContacts);
+  // const filterValue = useSelector(contactsSelectors.getFilter);
   // console.log(`filter`, filterValue);
   const dispatch = useDispatch();
 
@@ -17,9 +17,11 @@ export default function ContactList() {
   }, [dispatch]);
 
   
-  const filteredContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filterValue),
-  );
+  // const filteredContacts = contacts.filter(contact =>
+  //   contact.name.toLowerCase().includes(filterValue),
+  // );
+
+  const filteredContacts = useSelector(contactsSelectors.getFilteredContact);
   
   return (
     <ul>
